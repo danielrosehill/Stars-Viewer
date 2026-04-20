@@ -213,12 +213,12 @@ a:hover{text-decoration:underline}
   color:var(--muted);margin-left:2px}
 .topbar ul.nav{padding:0;margin:0}
 
-.dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;
-  min-width:260px;background:#fff;border:1px solid var(--border);
-  border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);
-  padding:6px;list-style:none;margin:0;z-index:200}
-.topbar .nav > li.open .dropdown,
-.topbar .nav > li:hover .dropdown{display:block}
+.dropdown{display:none;position:absolute;top:100%;left:0;
+  min-width:280px;max-height:calc(100vh - 80px);overflow-y:auto;
+  background:#fff;border:1px solid var(--border);
+  border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.12);
+  padding:6px;list-style:none;margin:4px 0 0;z-index:200}
+.topbar .nav > li.open .dropdown{display:block}
 .dropdown li{list-style:none}
 .dropdown a{display:flex;justify-content:space-between;align-items:center;
   padding:7px 10px;border-radius:5px;color:var(--fg);font-size:14px;
