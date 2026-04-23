@@ -1,0 +1,68 @@
+name: Sync stars and rebuild site
+
+on:
+  schedule:
+    # Daily 06:00 UTC (09:00 IDT / 08:00 IST)
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Full sweep (detects unstars and metadata drift)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-stars
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Configure gh auth
+        env:
+          GH_TOKEN: ${{ secrets.STARS_PAT }}
+        run: gh auth status
+
+      - name: Sync stars
+        env:
+          GH_TOKEN: ${{ secrets.STARS_PAT }}
+        run: |
+          # Weekly full sweep on Sundays; incremental otherwise.
+          if [ "${{ inputs.full }}" = "true" ] || [ "$(date -u +%u)" = "7" ]; then
+            python sync_stars.py --full
+          else
+            python sync_stars.py
+          fi
+
+      - name: Fetch pushed_at for new repos
+        env:
+          GH_TOKEN: ${{ secrets.STARS_PAT }}
+        run: python fetch_updated.py
+
+      - name: Build site
+        run: python build_site.py
+
+      - name: Commit and push
+        run: |
+          git config user.name  "stars-sync-bot"
+          git config user.email "stars-sync-bot@users.noreply.github.com"
+          git add stars.jsonl updated_at.json docs/ sync_summary.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          added=$(jq '.added | length' sync_summary.json)
+          removed=$(jq '.removed | length' sync_summary.json)
+          updated=$(jq '.updated | length' sync_summary.json)
+          git commit -m "sync: +${added} -${removed} ~${updated} stars"
+          git push

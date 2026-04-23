@@ -1,35 +1,52 @@
-# Star-Export-0426
+# Stars-Viewer
 
-Snapshot of Daniel Rosehill's GitHub stars on 2026-04-20, with a local semantic search index built on DuckDB + VSS.
+Self-updating categorised browser for Daniel Rosehill's GitHub stars.
+Nightly: pull new stars → diff against `stars.jsonl` → rebuild the static
+site in `docs/`. GitHub Pages serves from `docs/`.
 
-## Contents
+## Pipeline
 
-- `stars.jsonl` — 4,949 starred repos (full metadata incl. stargazer counts at fetch time)
-- `build_index.py` — embed descriptions (MiniLM-L6-v2) and write `stars.duckdb` with an HNSW index
-- `search.py` — natural-language search CLI
-- `stars.duckdb` — generated; not committed if large (see `.gitignore`)
+| Script | Purpose |
+| --- | --- |
+| `sync_stars.py` | Incremental pull of `/user/starred`. Short-circuits when a page contains nothing new. `--full` reconciles unstars + metadata drift. |
+| `fetch_updated.py` | GraphQL batch fetch of `pushedAt` for repos missing from `updated_at.json`. Resumable. |
+| `build_site.py` | Regex-based categoriser → static site at `docs/`. |
+| `build_index.py` / `search.py` | Optional: DuckDB + VSS semantic search over descriptions. |
 
-## Usage
+## Automation
+
+`.github/workflows/sync.yml` runs daily at 06:00 UTC:
+
+1. `sync_stars.py` (incremental; full sweep on Sundays)
+2. `fetch_updated.py` (only touches newly added repos)
+3. `build_site.py` (rebuilds `docs/`)
+4. Commits `stars.jsonl`, `updated_at.json`, `docs/`, `sync_summary.json`
+
+Requires repo secret **`STARS_PAT`** — fine-grained PAT with read access to
+the user's starred repos (the default `GITHUB_TOKEN` cannot read another
+user's stars).
+
+Manual run: `gh workflow run sync.yml` (optionally `-f full=true`).
+
+## Local use
 
 ```bash
 pip install -r requirements.txt
-python build_index.py          # one-off, ~1 min on CPU
-python search.py "mcp servers for home automation" --k 10
-python search.py "static site generators" --lang Go
+python sync_stars.py          # or --full
+python fetch_updated.py
+python build_site.py
 ```
 
-## Direct SQL
+## Categories
+
+Regex + topic matching across ~30 buckets grouped into 8 top-level sections
+(AI & LLMs, Speech & Media, Data, Developer, Security & Privacy, Home &
+Infra, Workflow & Productivity, Curated). New stars are classified on every
+site rebuild — no manual tagging. Taxonomy lives inline in `build_site.py`.
+
+## Semantic search (optional)
 
 ```bash
-duckdb stars.duckdb
-```
-
-```sql
-LOAD vss;
--- filter by topic + semantic
-SELECT full_name, stargazers
-FROM stars
-WHERE list_contains(topics, 'llm')
-ORDER BY stargazers DESC
-LIMIT 20;
+python build_index.py          # ~1 min on CPU
+python search.py "mcp servers for home automation" --k 10
 ```
