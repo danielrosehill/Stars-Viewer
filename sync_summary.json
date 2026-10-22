@@ -1,27 +1,21 @@
 {
   "added": [
-    "segment-any-text/wtpsplit",
-    "HKUDS/CLI-Anything",
-    "agent-substrate/substrate",
-    "robmsmt/ASR-Audio-Data-Links",
-    "Kiln-AI/Kiln"
+    "ai-job-search-dev/ai-job-search"
   ],
   "updated": [
+    "HKUDS/CLI-Anything",
+    "agent-substrate/substrate",
+    "Kiln-AI/Kiln",
     "OpenWhispr/openwhispr",
     "huggingface/peft",
     "rShetty/awesome-podcasts",
-    "AntennaPod/AntennaPod",
-    "MadsLorentzen/ai-job-search",
     "ranxianglei/billion-context",
     "morluto/rea",
     "longbridge/gpui-kit",
     "strawberrymusicplayer/strawberry",
     "google-deepmind/concordia",
-    "google/open-location-code",
-    "abb128/LiveCaptions",
     "FoxxMD/multi-scrobbler",
     "OctoPrint/OctoPrint",
-    "enchant97/note-mark",
     "caddyserver/caddy",
     "go-vikunja/vikunja",
     "chrisvel/tududi",
@@ -30,14 +24,14 @@
     "chatwoot/chatwoot",
     "jgm/pandoc",
     "ohmyzsh/ohmyzsh",
+    "giuseppe99barchetta/SuggestArr",
     "florisboard/florisboard",
     "FossifyOrg/Keyboard",
-    "Julow/Unexpected-Keyboard",
+    "AnySoftKeyboard/AnySoftKeyboard",
     "skylot/jadx",
-    "RikkaApps/Shizuku-API",
+    "BryceWG/BiBi-Keyboard",
     "aleksey-hoffman/sigma-file-manager",
-    "Verisonder/SonderKey",
-    "getdictus/dictus-desktop",
+    "rustemar/voice-keyboard",
     "omacom/omarchy",
     "Tencent/BrowserSkill",
     "tt-a1i/archify",
@@ -63,5 +57,5 @@
     "NationalSecurityAgency/ghidra"
   ],
   "removed": [],
-  "total": 5108
+  "total": 5109
 }
