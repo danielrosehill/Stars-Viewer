@@ -1,11 +1,13 @@
 {
-  "added": [],
+  "added": [
+    "NVIDIA/OpenShell",
+    "Graphify-Labs/graphify"
+  ],
   "updated": [
     "Zettlr/Zettlr",
+    "NVIDIA-NeMo/Evaluator",
     "NVIDIA-NeMo/Nemotron",
     "NVIDIA-NeMo/Automodel",
-    "NVIDIA-NeMo/UserSim",
-    "NVIDIA-NeMo/Anonymizer",
     "happier-dev/happier",
     "bespokelabsai/curator",
     "openenv/OpenEnv",
@@ -15,7 +17,6 @@
     "thinking-machines-lab/tinker-cookbook",
     "mlabonne/llm-datasets",
     "natolambert/rlhf-book",
-    "eric-mitchell/direct-preference-optimization",
     "rspamd/rspamd",
     "cSploit/android",
     "excalidraw/excalidraw",
@@ -24,14 +25,15 @@
     "Kiln-AI/Kiln",
     "OpenWhispr/openwhispr",
     "huggingface/peft",
-    "NVIDIA-AI-Blueprints/pdf-to-podcast",
+    "rShetty/awesome-podcasts",
     "AntennaPod/AntennaPod",
     "ai-job-search-dev/ai-job-search",
     "ranxianglei/billion-context",
     "morluto/rea",
     "longbridge/gpui-kit",
-    "strawberrymusicplayer/strawberry",
+    "EQ-bench/EQ-Bench",
     "google-deepmind/concordia",
+    "abb128/LiveCaptions",
     "FoxxMD/multi-scrobbler",
     "OctoPrint/OctoPrint",
     "enchant97/note-mark",
@@ -50,7 +52,6 @@
     "skylot/jadx",
     "BryceWG/BiBi-Keyboard",
     "soniqo/speech-android",
-    "RikkaApps/Shizuku-API",
     "aleksey-hoffman/sigma-file-manager",
     "rustemar/voice-keyboard",
     "omacom/omarchy",
@@ -60,5 +61,5 @@
     "trevornk/ramblr"
   ],
   "removed": [],
-  "total": 105
+  "total": 107
 }
