@@ -186,6 +186,12 @@
   "description": "Awesome Lists & Curated"
  },
  {
+  "slug": "israel",
+  "title": "Israel",
+  "group": "Israel",
+  "description": "Anything about or built for Israel: Israeli services, shops, banks, government, public data, alerts, Hebrew-language tools. Takes priority over other categories only when Israel is the point of the repo"
+ },
+ {
   "slug": "other",
   "title": "Other",
   "group": "Curated",

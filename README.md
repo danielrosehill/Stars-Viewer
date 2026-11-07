@@ -40,8 +40,8 @@ python build_site.py
 
 ## Categories
 
-About 30 buckets grouped into 8 top-level sections (AI & LLMs, Speech & Media,
-Data, Developer, Security & Privacy, Home & Infra, Workflow & Productivity,
+about 30 buckets grouped into 9 top-level sections (AI & LLMs, Speech & Media,
+Data, Developer, Security & Privacy, Home & Infra, Workflow & Productivity, Israel,
 Curated).
 
 - `llm_categories.json` (`full_name` → slug): one LLM-assigned category per repo.

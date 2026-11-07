@@ -1,6 +1,6 @@
 """Build a categorized GitHub Pages minisite from stars.jsonl + updated_at.json.
 
-- Top-level group nav with dropdown submenus (8 groups, 30 sub-categories).
+- Top-level group nav with dropdown submenus (9 groups, 32 sub-categories).
 - Light mode.
 - Client-side sort (stars / name / updated) + filter on category pages.
 - Homepage shows groups A-Z; each group lists its sub-categories.
@@ -160,6 +160,11 @@ CATEGORIES: list[tuple[str, str, set[str], str, str]] = [
          "static-site-generator", "blog"},
         r"markdown|obsidian|note.taking|documentation|static.site",
         "Workflow & Productivity"),
+
+    # Israel
+    ("Israel", "israel",
+        {"israel", "israeli", "hebrew"},
+        r"\bisrael\w*|\bhebrew\b|\bknesset\b|\byad2\b", "Israel"),
 
     # Curated
     ("Awesome Lists & Curated", "awesome",
@@ -370,6 +375,7 @@ GROUP_ORDER = [
     "Security & Privacy",
     "Home & Infra",
     "Workflow & Productivity",
+    "Israel",
     "Curated",
 ]
 
