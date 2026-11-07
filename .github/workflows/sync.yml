@@ -2,8 +2,9 @@ name: Sync stars and rebuild site
 
 on:
   schedule:
-    # Daily 06:00 UTC (09:00 IDT / 08:00 IST)
-    - cron: "0 6 * * *"
+    # Weekly, Sunday 03:00 UTC. Scheduled runs have been starting ~7h late,
+    # so this lands on Sunday morning-to-midday Israel time.
+    - cron: "0 3 * * 0"
   workflow_dispatch:
     inputs:
       full:
@@ -37,8 +38,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.STARS_PAT }}
         run: |
-          # Weekly full sweep on Sundays; incremental otherwise.
-          if [ "${{ inputs.full }}" = "true" ] || [ "$(date -u +%u)" = "7" ]; then
+          # Scheduled runs are weekly, so always full; manual runs choose.
+          if [ "${{ inputs.full }}" = "true" ] || [ "${{ github.event_name }}" = "schedule" ]; then
             python sync_stars.py --full
           else
             python sync_stars.py

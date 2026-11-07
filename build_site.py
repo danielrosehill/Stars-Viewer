@@ -16,6 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 STARS = ROOT / "stars.jsonl"
 UPDATED = ROOT / "updated_at.json"
+LLM_CATEGORIES = ROOT / "llm_categories.json"
 OUT = ROOT / "docs"
 
 # (title, slug, topic_matches, keyword_regex, group)
@@ -30,6 +31,9 @@ CATEGORIES: list[tuple[str, str, set[str], str, str]] = [
         {"claude", "claude-code", "anthropic", "claude-desktop", "claude-skills",
          "skills"},
         r"\bclaude\b|anthropic", "AI & LLMs"),
+    ("Agent Harnesses & Coding Agents", "harnesses",
+        {"agent-harness", "coding-agent", "coding-agents"},
+        r"agent.harness|coding.agent", "AI & LLMs"),
     ("MCP (Model Context Protocol)", "mcp",
         {"mcp", "mcp-server", "mcp-client", "model-context-protocol", "mcp-servers"},
         r"\bmcp\b|model.context.protocol", "AI & LLMs"),
@@ -482,10 +486,19 @@ def main() -> None:
     repos = [json.loads(l) for l in STARS.open()]
     updated = json.loads(UPDATED.read_text()) if UPDATED.exists() else {}
 
+    # LLM assignments (one category per repo) win; regex covers anything newer.
+    llm = json.loads(LLM_CATEGORIES.read_text()) if LLM_CATEGORIES.exists() else {}
+
     buckets: dict[str, list[dict]] = defaultdict(list)
     uncategorized: list[dict] = []
     for r in repos:
-        cats = classify(r)
+        slug = llm.get(r["full_name"])
+        if slug == "other":
+            cats = []
+        elif slug:
+            cats = [slug]
+        else:
+            cats = classify(r)
         if cats:
             for c in cats:
                 buckets[c].append(r)

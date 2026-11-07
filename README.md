@@ -1,7 +1,7 @@
 # Stars-Viewer
 
 Self-updating categorised browser for Daniel Rosehill's GitHub stars.
-Nightly: pull new stars → diff against `stars.jsonl` → rebuild the static
+Weekly: pull new stars → diff against `stars.jsonl` → rebuild the static
 site in `docs/`. GitHub Pages serves from `docs/`.
 
 ## Pipeline
@@ -15,9 +15,10 @@ site in `docs/`. GitHub Pages serves from `docs/`.
 
 ## Automation
 
-`.github/workflows/sync.yml` runs daily at 06:00 UTC:
+`.github/workflows/sync.yml` runs weekly, Sunday 03:00 UTC (moved from daily on
+2026-11-07 to cut Actions use; scheduled runs have been starting about 7h late):
 
-1. `sync_stars.py` (incremental; full sweep on Sundays)
+1. `sync_stars.py --full` (manual runs are incremental unless `-f full=true`)
 2. `fetch_updated.py` (only touches newly added repos)
 3. `build_site.py` (rebuilds `docs/`)
 4. Commits `stars.jsonl`, `updated_at.json`, `docs/`, `sync_summary.json`
@@ -39,10 +40,17 @@ python build_site.py
 
 ## Categories
 
-Regex + topic matching across ~30 buckets grouped into 8 top-level sections
-(AI & LLMs, Speech & Media, Data, Developer, Security & Privacy, Home &
-Infra, Workflow & Productivity, Curated). New stars are classified on every
-site rebuild — no manual tagging. Taxonomy lives inline in `build_site.py`.
+About 30 buckets grouped into 8 top-level sections (AI & LLMs, Speech & Media,
+Data, Developer, Security & Privacy, Home & Infra, Workflow & Productivity,
+Curated).
+
+- `llm_categories.json` (`full_name` → slug): one LLM-assigned category per repo.
+  Takes priority at build time. Written by skill `categorize-stars` in the private
+  `gh-stars-manager` plugin, run on demand from a laptop, never in Actions.
+- Regex + topic matching in `build_site.py`: fallback for stars not yet in that
+  file, so a star can sit in several buckets until it is categorised.
+- `taxonomy.json`: the fixed list offered to the model (slug, title, group,
+  description). Keep its slugs in step with `CATEGORIES` in `build_site.py`.
 
 ## Semantic search (optional)
 

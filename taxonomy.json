@@ -1,0 +1,194 @@
+[
+ {
+  "slug": "llm",
+  "title": "LLMs & Generative AI",
+  "group": "AI & LLMs",
+  "description": "LLMs & Generative AI"
+ },
+ {
+  "slug": "claude",
+  "title": "Claude & Claude Code",
+  "group": "AI & LLMs",
+  "description": "Add-ons for Claude and Claude Code: skills, plugins, prompts, configs, guides. Not harnesses or runtimes"
+ },
+ {
+  "slug": "harnesses",
+  "title": "Agent Harnesses & Coding Agents",
+  "group": "AI & LLMs",
+  "description": "Agent harnesses and coding-agent runtimes: CLIs or apps that run, wrap, orchestrate or supervise agents such as Claude Code, Codex or OpenCode"
+ },
+ {
+  "slug": "mcp",
+  "title": "MCP (Model Context Protocol)",
+  "group": "AI & LLMs",
+  "description": "MCP (Model Context Protocol)"
+ },
+ {
+  "slug": "agents",
+  "title": "AI Agents & Agentic",
+  "group": "AI & LLMs",
+  "description": "Agent frameworks, libraries and agent applications that are not coding-agent harnesses"
+ },
+ {
+  "slug": "rag",
+  "title": "RAG & Vector Search",
+  "group": "AI & LLMs",
+  "description": "RAG & Vector Search"
+ },
+ {
+  "slug": "ml",
+  "title": "Machine Learning & Deep Learning",
+  "group": "AI & LLMs",
+  "description": "Machine Learning & Deep Learning"
+ },
+ {
+  "slug": "stt",
+  "title": "STT (Speech-to-Text)",
+  "group": "Speech & Media",
+  "description": "STT (Speech-to-Text)"
+ },
+ {
+  "slug": "tts",
+  "title": "TTS (Text-to-Speech)",
+  "group": "Speech & Media",
+  "description": "TTS (Text-to-Speech)"
+ },
+ {
+  "slug": "audio",
+  "title": "Audio (general)",
+  "group": "Speech & Media",
+  "description": "Audio (general)"
+ },
+ {
+  "slug": "media",
+  "title": "Video & Media",
+  "group": "Speech & Media",
+  "description": "Video & Media"
+ },
+ {
+  "slug": "image-gen",
+  "title": "Image Generation & AI Art",
+  "group": "Speech & Media",
+  "description": "Image Generation & AI Art"
+ },
+ {
+  "slug": "sql-db",
+  "title": "SQL Databases",
+  "group": "Data",
+  "description": "SQL Databases"
+ },
+ {
+  "slug": "graph-db",
+  "title": "Graph Databases",
+  "group": "Data",
+  "description": "Graph Databases"
+ },
+ {
+  "slug": "document-db",
+  "title": "Document Databases",
+  "group": "Data",
+  "description": "Document Databases"
+ },
+ {
+  "slug": "analytics",
+  "title": "Analytics & Data Science",
+  "group": "Data",
+  "description": "Analytics & Data Science"
+ },
+ {
+  "slug": "dev-tools",
+  "title": "Developer Tools",
+  "group": "Developer",
+  "description": "Developer Tools"
+ },
+ {
+  "slug": "cli",
+  "title": "CLI & Terminal",
+  "group": "Developer",
+  "description": "CLI & Terminal"
+ },
+ {
+  "slug": "frontend",
+  "title": "Frontend & Web",
+  "group": "Developer",
+  "description": "Frontend & Web"
+ },
+ {
+  "slug": "devops",
+  "title": "DevOps, Docker & Kubernetes",
+  "group": "Developer",
+  "description": "DevOps, Docker & Kubernetes"
+ },
+ {
+  "slug": "mobile",
+  "title": "Mobile (Android / iOS)",
+  "group": "Developer",
+  "description": "Mobile (Android / iOS)"
+ },
+ {
+  "slug": "security",
+  "title": "Security (general)",
+  "group": "Security & Privacy",
+  "description": "Security (general)"
+ },
+ {
+  "slug": "osint",
+  "title": "OSINT",
+  "group": "Security & Privacy",
+  "description": "OSINT"
+ },
+ {
+  "slug": "privacy",
+  "title": "Privacy",
+  "group": "Security & Privacy",
+  "description": "Privacy"
+ },
+ {
+  "slug": "pii",
+  "title": "PII & Data Protection",
+  "group": "Security & Privacy",
+  "description": "PII & Data Protection"
+ },
+ {
+  "slug": "home-automation",
+  "title": "Home Automation & Smart Home",
+  "group": "Home & Infra",
+  "description": "Home Automation & Smart Home"
+ },
+ {
+  "slug": "self-hosted",
+  "title": "Self-Hosted & Homelab",
+  "group": "Home & Infra",
+  "description": "Self-Hosted & Homelab"
+ },
+ {
+  "slug": "automation",
+  "title": "Automation & Workflow",
+  "group": "Workflow & Productivity",
+  "description": "Automation & Workflow"
+ },
+ {
+  "slug": "productivity",
+  "title": "Productivity",
+  "group": "Workflow & Productivity",
+  "description": "Productivity"
+ },
+ {
+  "slug": "writing",
+  "title": "Writing, Docs & Markdown",
+  "group": "Workflow & Productivity",
+  "description": "Writing, Docs & Markdown"
+ },
+ {
+  "slug": "awesome",
+  "title": "Awesome Lists & Curated",
+  "group": "Curated",
+  "description": "Awesome Lists & Curated"
+ },
+ {
+  "slug": "other",
+  "title": "Other",
+  "group": "Curated",
+  "description": "Nothing above fits"
+ }
+]
